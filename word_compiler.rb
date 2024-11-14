@@ -33,7 +33,8 @@ def menu(colection)
     puts "1 - Añadir palabra"
     puts "2 - Eliminar palabra"
     puts "3 - Ver lista"
-    puts "4 - Salir"
+    puts "4 - Guardar lista a un archivo"
+    puts "5 - Salir"
 end
 
 def add_word(colection)
@@ -65,6 +66,14 @@ def delete_word(colection)
     end
 end
 
+def save_list(colection)
+    # Creando variable para la fecha y hora actual
+    current_date = Time.now.strftime("%d-%m-%y %H-%M-%S")
+
+    puts "Guardando el contenido en un archivo..."
+    File.write("#{current_date}.txt", colection) # Anotando el array de colection a un archivo con fecha actual
+    puts "Se ha guardado el registro en el archivo con nombre '#{current_date}'"
+end
 
 # Corriendo el programa
 
@@ -90,6 +99,8 @@ while true # Es necesario este true para que se cumpla el bucle infinito
         when 3
             show_list(colection)
         when 4
+            save_list(colection)
+        when 5
             puts "Cerrando..."
             break
 	# Esta línea se suponía que servía (el * hace de negador en ruby)
